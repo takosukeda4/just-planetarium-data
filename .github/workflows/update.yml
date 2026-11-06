@@ -36,8 +36,9 @@ jobs:
           if [ "$W" = "info" ] || [ "$W" = "both" ]; then python scripts/build_info.py out; fi
       - name: publish to gh-pages (keep other files, single commit)
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          # pub は別のリポジトリなので --global にする（1 回目の実行で「Author identity unknown」になった）
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "41898282+github-actions[bot]@users.noreply.github.com"
           if git ls-remote --exit-code origin gh-pages >/dev/null 2>&1; then
             git clone --depth 1 --branch gh-pages "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" pub
           else
