@@ -1,0 +1,39 @@
+#qr	qr.png	1024	6	6	170	29
+#items
+盛岡市子ども科学館	11/7(土)･14(土)太陽を見る会	2026-11-07	https://kodomokagakukan.com/topics/%e5%a4%aa%e9%99%bd%e3%82%92%e8%a6%8b%e3%82%8b%e4%bc%9a-8/	0	event	2026-11-14		2026-10-24
+相模原市立博物館	宇宙交差天 SAGAMIHARA	2026-11-07	https://sagamiharacitymuseum.jp/blog/2026/10/24/u-kousa-sagamihara/	1	event	2026-11-08		2026-10-24
+美星天文台	11月のミニイベント	2026-11-07	https://www.bao.city.ibara.okayama.jp/?p=4895	2	event	2026-11-07		2026-10-20
+静岡科学館る・く・る	【11/8，11/29】わくわく科学工作「カップ万華鏡」	2026-11-08	https://www.rukuru.jp/news_topics/news.php?id=160	3	event	2026-11-29		2026-11-08
+つくばエキスポセンター	【10/14 12:00より申込開始】おとなのためのサイエンス講座 第Ⅱ期 「11/14(土) ダイヤモンドの多様な世界	2026-11-14	https://www.expocenter.or.jp/topics/detail/id=5297	4	event	2026-11-14		2026-10-06
+盛岡市子ども科学館	11/14(土)星を見る会	2026-11-14	https://kodomokagakukan.com/topics/11%e6%9c%88%e6%98%9f%e3%82%92%e8%a6%8b%e3%82%8b%e4%bc%9a-2/	5	event	2026-11-14		2026-10-24
+静岡科学館る・く・る	めばえのかがく「風で走る車をつくろう！」	2026-11-19	https://www.rukuru.jp/news_topics/news.php?id=187	6	event	2026-11-19		2026-11-19
+静岡科学館る・く・る	【11/21】テーブルサイエンス「つく？つかない？磁石のふしぎ」	2026-11-21	https://www.rukuru.jp/news_topics/news.php?id=183	7	event	2026-11-21		2026-11-21
+つくばエキスポセンター	【10/22(木)受付開始】11/22(日)開催 企画展関連イベント「KAGAYA講演会＋プラネタリウム上映会」	2026-11-22	https://www.expocenter.or.jp/topics/detail/id=5300	8	event	2026-11-22		2026-10-17
+仙台市科学館	2026年11月22日(日)・23日(月・祝)/12月24日(木)・25日(金)｜サイエンスショー	2026-11-22	https://www.kagakukan.sendai-c.ed.jp/event_/15202/	9	event	2026-12-25		2026-11-05
+静岡科学館る・く・る	【11/22，23】サイエンスショー「ドキドキ！ハラハラ！慣性の法則」	2026-11-22	https://www.rukuru.jp/news_topics/news.php?id=159	10	event	2026-11-23		2026-11-22
+つくばエキスポセンター	【申し込み受付中】 11/23（月・祝）『熟睡』プラ寝たリウム	2026-11-23	https://www.expocenter.or.jp/topics/detail/id=5256	11	event	2026-11-23		2026-10-23
+盛岡市子ども科学館	11/28(土)､29(日)ベビープラネタリウム	2026-11-28	https://kodomokagakukan.com/topics/%e3%83%99%e3%83%93%e3%83%bc%e3%83%97%e3%83%a9%e3%83%8d%e3%82%bf%e3%83%aa%e3%82%a6%e3%83%a0%ef%bc%886%e6%9c%88%ef%bc%89/	12	event	2026-11-29		2026-10-23
+つくばエキスポセンター	「サテらいふとめぐる！つくばの科学館JAXA衛星スタンプラリー」開催中！～11/30まで	2026-11-30	https://www.expocenter.or.jp/topics/detail/id=5312	13	event	2026-11-30		2026-10-15
+かわさき宙と緑の科学館	12月6日プラネタリウムコンサート2026「星あかりのゆうべ～2つの音色に包まれて～」	2026-12-06	https://www.nature-kawasaki.jp/planetarium-concert2026	14	event	2026-12-06		2026-11-01
+かわさき宙と緑の科学館	12月12日オーロラ特別上映会・オーロラ写真展「ビーバーと見たオーロラ」、川崎市役所本庁舎企画展「オーロラワンダー」	2026-12-12	https://www.nature-kawasaki.jp/aurora2026	15	event	2026-12-12		2026-11-01
+仙台市科学館	2026年12月12日(土)｜楽しい化学実験室「ピカピカ金属の不思議」(申込受付中・11/24(火)〆切)	2026-12-12	https://www.kagakukan.sendai-c.ed.jp/event_/16134/	16	event	2026-12-12	2026-11-24	2026-10-24
+美星天文台	ふたご座流星群観察会(2026年12月14日)	2026-12-14	https://www.bao.city.ibara.okayama.jp/?p=4887	17	event	2026-12-14		2026-10-07
+つくばエキスポセンター	博物館学芸員実習生による科学教室・プラネタリウム解説 12/19(土)～12/20(日)開催	2026-12-19	https://www.expocenter.or.jp/topics/detail/id=5323	18	event	2026-12-20		2026-10-31
+仙台市科学館	2026年12月19日(土)｜科学工作教室「発光ダイオードを利用した光のインテリア工作」（申込受付中・12/1(火)〆切	2026-12-19	https://www.kagakukan.sendai-c.ed.jp/event_/3020/	19	event	2026-12-19	2026-12-01	2026-11-01
+盛岡市子ども科学館	令和8年度第44回たのしい科学技術作品展	2026-12-19	https://kodomokagakukan.com/topics/%e4%bb%a4%e5%92%8c8%e5%b9%b4%e5%ba%a6%e7%ac%ac44%e5%9b%9e%e3%81%9f%e3%81%ae%e3%81%97%e3%81%84%e7%a7%91%e5%ad%a6%e6%8a%80%e8%a1%93%e4%bd%9c%e5%93%81%e5%b1%95/	20	event	2027-01-11		2026-10-20
+静岡科学館る・く・る	【12/20，1/11】わくわく科学工作「おもしろスリットアニメ」	2026-12-20	https://www.rukuru.jp/news_topics/news.php?id=170	21	event	2027-01-11		2026-12-20
+国立天文台	日本の公開天文台 星空と人をつなぐ100年	2026-11-04	https://www.nao.ac.jp/news/blog/2026/20261104-public-observatory.html	22	news			2026-11-04
+関崎海星館	11月 天体観察スケジュール	2026-11-02	https://kaiseikan.jp/events/6435/	23	news			2026-11-02
+浜松科学館	今月の星空(2026年11月)	2026-11-01	https://www.mirai-ra.jp/note/blog/44940/	24	news			2026-11-01
+盛岡市子ども科学館	第44回 星の写真展	2026-10-26	https://kodomokagakukan.com/topics/%e7%ac%ac42%e5%9b%9e%e3%80%80%e6%98%9f%e3%81%ae%e5%86%99%e7%9c%9f%e5%b1%95/	25	news			2026-10-26
+美星天文台	いばら天文講座(2026年度)	2026-10-24	https://www.bao.city.ibara.okayama.jp/?p=4898	26	news			2026-10-24
+関崎海星館	２０２７年（令和９年）初日の出観望会のお知らせ	2026-10-23	https://kaiseikan.jp/events/6395/	27	news			2026-10-23
+関崎海星館	「MMX 火星衛星探査計画」上映のお知らせ	2026-10-23	https://kaiseikan.jp/news/6394/	28	news			2026-10-23
+相模原市立博物館	プラネタリウム一般投影「台風 ～天体が生み出す大気の渦～」の番組変更について	2026-10-11	https://sagamiharacitymuseum.jp/blog/2026/10/11/%e3%83%97%e3%83%a9%e3%83%8d%e3%82%bf%e3%83%aa%e3%82%a6%e3%83%a0%e4%b8%80%e8%88%ac%e6%8a%95%e5%bd%b1%e3%80%8c%e5%8f%b0%e9%a2%a8-%ef%bd%9e%e5%a4%a9%e4%bd%93%e3%81%8c%e7%94%9f%e3%81%bf%e5%87%ba%e3%81%99/	-1	news			2026-10-11
+#slots
+slots/slot_00.jpg	Moka City Science Education Center.jpg	Miyuki Meinaka	CC BY-SA 4.0	Miyuki Meinaka / CC BY-SA 4.0 / Wikimedia Commons
+slots/slot_01.jpg	Yokohama Gate Tower - Planetaria Yokohama 02.jpg	NEO-NEED	CC BY-SA 4.0	NEO-NEED / CC BY-SA 4.0 / Wikimedia Commons
+slots/slot_02.jpg	20240116 Tokyo Metropolitan Art Museum 11.11.20.jp	Matthide127	CC0	Matthide127 / CC0 / Wikimedia Commons
+slots/slot_03.jpg	国立科学博物館 - panoramio (13).jpg	運転太郎	CC BY 3.0	運転太郎 / CC BY 3.0 / Wikimedia Commons
+slots/slot_04.jpg	Ueno 20241013 171226.jpg	Ka23 13	CC BY 4.0	Ka23 13 / CC BY 4.0 / Wikimedia Commons
+slots/slot_05.jpg	Projection Mapping In Nagoya City Science Museum (	KKPCW	CC BY-SA 4.0	KKPCW / CC BY-SA 4.0 / Wikimedia Commons
