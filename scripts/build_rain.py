@@ -18,11 +18,12 @@ def level(code, precip, snow):
 P = places()
 lv, mm, cloud = [], [], []
 stamp = None
-for i in range(0, len(P), 50):                      # 1 回に 50 地点（URL が長くなりすぎないように）
-    ch = P[i:i + 50]
+for i in range(0, len(P), 25):                      # 1 回に 25 地点（URL が長くなりすぎず、1 回の返事が重くならないように）
+    ch = P[i:i + 25]
     q = {"latitude": ",".join(str(p["lat"]) for p in ch), "longitude": ",".join(str(p["lon"]) for p in ch),
          "current": "precipitation,snowfall,weather_code,cloud_cover", "timezone": "GMT"}
-    d = json.loads(fetch("https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(q, safe=",")))
+    # GitHub Actions からは時間切れになることがあるので、60 秒待ちで 4 回まで試す（2026-11-06 の 1 回目の実行で時間切れ）
+    d = json.loads(fetch("https://api.open-meteo.com/v1/forecast?" + urllib.parse.urlencode(q, safe=","), timeout=60, retries=4))
     d = d if isinstance(d, list) else [d]
     for x in d:
         c = x["current"]; stamp = stamp or c["time"]
