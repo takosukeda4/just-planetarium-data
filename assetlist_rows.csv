@@ -1,0 +1,7 @@
+# A4 のアセットリスト用の行（AssetList_Planetarium.csv と同じ形。名前の行 → URL の行）。使ったとき（B6 が雨・情報パネルを入れたとき）だけ本体に足す
+雨の情報（今の降水）: Weather data by Open-Meteo.com（Open-Meteo さん）/ CC BY 4.0
+https://open-meteo.com/
+情報パネルの写真: Wikimedia Commons の CC 等の写真（作者さん・ライセンスはパネルに表示）/ CC0・CC BY・CC BY-SA ほか（写真ごと）
+https://commons.wikimedia.org/
+情報パネルの文章: 各館の公式お知らせ（東京都美術館さん・国立国際美術館さん・国立民族学博物館さん・明石市立天文科学館さん・国立天文台さんほか。題・日付・リンクのみ）/ 出典の表示
+https://github.com/
