@@ -335,7 +335,8 @@ for i, it in enumerate(items):
     it["qr"] = i
     it["qr_ver"] = q.version
     qr_ok += 1
-qr_img.save(os.path.join(OUT, "qr.png"), optimize=True)
+# 灰色（L）の PNG は、VRChat の画像の読み込み（ClientSim）で白が赤に出たので、RGB の PNG で書く（11/6 B14b のあと）
+qr_img.convert("RGB").save(os.path.join(OUT, "qr.png"), optimize=True)
 
 
 # --- 画像の枠: Wikimedia Commons の「館ごとのカテゴリ」の中の、許可リストのライセンスの写真だけ。日替わり ---
