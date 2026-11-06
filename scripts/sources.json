@@ -5,133 +5,127 @@
    "id": "tobikan",
    "venue": "東京都美術館",
    "url": "https://www.tobikan.jp/rss.xml",
-   "kind": "museum",
-   "keywords": [
-    "ミュージアム",
-    "企画展",
-    "展",
-    "特別展",
-    "観覧日",
-    "開催"
-   ]
+   "kind": "museum"
   },
   {
    "id": "nmao",
    "venue": "国立国際美術館",
    "url": "https://www.nmao.go.jp/feed/",
-   "kind": "museum",
-   "keywords": [
-    "コレクション",
-    "ミュージアム",
-    "展",
-    "観覧日",
-    "開催"
-   ]
+   "kind": "museum"
   },
   {
    "id": "nmwa",
    "venue": "国立西洋美術館",
    "url": "https://www.nmwa.go.jp/feed/",
    "kind": "museum",
-   "keywords": [
-    "ミュージアム",
-    "展",
-    "観覧日",
-    "開催"
-   ]
+   "off": true,
+   "off_why": "2026-11-06 フィードの中身 0 件"
   },
   {
    "id": "artizon",
    "venue": "アーティゾン美術館",
    "url": "https://www.artizon.museum/feed/",
    "kind": "museum",
-   "keywords": [
-    "ミュージアム",
-    "展",
-    "観覧日",
-    "開催"
-   ]
+   "off": true,
+   "off_why": "2026-11-06 フィードの中身 0 件"
   },
   {
    "id": "minpaku",
    "venue": "国立民族学博物館",
    "url": "https://www.minpaku.ac.jp/feed/",
-   "kind": "museum",
-   "keywords": [
-    "ミュージアム",
-    "展",
-    "特別展",
-    "観覧日",
-    "開催"
-   ]
+   "kind": "museum"
   },
   {
    "id": "am12",
    "venue": "明石市立天文科学館",
    "url": "https://www.am12.jp/feed/",
-   "kind": "planetarium",
-   "keywords": [
-    "プラネタリウム",
-    "投影",
-    "番組",
-    "星",
-    "天文"
-   ]
+   "kind": "planetarium"
   },
   {
    "id": "osaka_sci",
    "venue": "大阪市立科学館",
    "url": "https://www.sci-museum.jp/feed/",
    "kind": "planetarium",
-   "keywords": [
-    "プラネタリウム",
-    "投影",
-    "展",
-    "星"
-   ]
+   "off": true,
+   "off_why": "2026-11-06 フィードの中身 0 件"
   },
   {
    "id": "konica",
    "venue": "コニカミノルタプラネタリア",
    "url": "https://planetarium.konicaminolta.jp/feed/",
    "kind": "planetarium",
-   "keywords": [
-    "プラネタリウム",
-    "上映",
-    "番組"
-   ]
+   "off": true,
+   "off_why": "2021 年で止まっている"
   },
   {
    "id": "naoj",
    "venue": "国立天文台",
    "url": "https://www.nao.ac.jp/atom.xml",
-   "kind": "astro",
-   "keywords": [
-    "星",
-    "天文",
-    "観望",
-    "月",
-    "彗星",
-    "流星",
-    "食"
-   ]
+   "kind": "astro"
   },
   {
    "id": "sendai_sci",
    "venue": "仙台市科学館",
    "url": "https://www.kagakukan.sendai-c.ed.jp/feed/",
+   "kind": "planetarium"
+  },
+  {
+   "id": "kawasaki",
+   "venue": "かわさき宙と緑の科学館",
+   "url": "https://www.nature-kawasaki.jp/feed/",
+   "kind": "planetarium"
+  },
+  {
+   "id": "mirai_ra",
+   "venue": "浜松科学館",
+   "url": "https://www.mirai-ra.jp/feed/",
+   "kind": "planetarium"
+  },
+  {
+   "id": "rukuru",
+   "venue": "静岡科学館る・く・る",
+   "url": "https://www.rukuru.jp/news.xml",
+   "kind": "science",
+   "future_pub_is_event": true
+  },
+  {
+   "id": "expocenter",
+   "venue": "つくばエキスポセンター",
+   "url": "https://www.expocenter.or.jp/RSS.rdf",
    "kind": "planetarium",
-   "keywords": [
-    "プラネタリウム",
-    "星",
-    "天文",
-    "宇宙",
-    "展",
-    "観望",
-    "教室",
-    "ラボ",
-    "イベント"
-   ]
+   "desc_keywords": true
+  },
+  {
+   "id": "morioka_sci",
+   "venue": "盛岡市子ども科学館",
+   "url": "https://kodomokagakukan.com/feed/",
+   "kind": "planetarium"
+  },
+  {
+   "id": "sagamihara",
+   "venue": "相模原市立博物館",
+   "url": "https://sagamiharacitymuseum.jp/feed/",
+   "kind": "museum"
+  },
+  {
+   "id": "bisei",
+   "venue": "美星天文台",
+   "url": "https://www.bao.city.ibara.okayama.jp/?feed=rss2",
+   "kind": "astro"
+  },
+  {
+   "id": "kaiseikan",
+   "venue": "関崎海星館",
+   "url": "https://kaiseikan.jp/feed/",
+   "kind": "astro"
+  },
+  {
+   "id": "jaxa",
+   "venue": "JAXA",
+   "url": "https://www.jaxa.jp/rss/press_j.rdf",
+   "kind": "space",
+   "off": true,
+   "off_why": "2026-11-06 規約が「事前の許可なく情報の利用はお断り（引用を除く）」とはっきり書いているため外した"
   }
  ],
  "commons_allowed_licenses": [
@@ -163,7 +157,6 @@
   "お詫び",
   "訂正",
   "採用",
-  "募集",
   "入札",
   "調達",
   "公募",
@@ -191,12 +184,40 @@
   "値上げ",
   "ご利用",
   "お問い合わせ",
-  "天文台ニュース"
+  "天文台ニュース",
+  "職員",
+  "非常勤",
+  "研究員",
+  "ボランティア募集",
+  "記事募集",
+  "広告",
+  "会員",
+  "復旧",
+  "交通規制",
+  "公衆電話",
+  "議事録",
+  "総会",
+  "要パスワード",
+  "協定",
+  "取材",
+  "昼食",
+  "休憩スペース",
+  "配布しています",
+  "打上げ時刻",
+  "打ち上げ時刻",
+  "バナー",
+  "団体利用",
+  "開館日時",
+  "開館カレンダー",
+  "内覧会",
+  "報道機関",
+  "メールマガジン",
+  "英語研修"
  ],
  "slots": 6,
  "slot_w": 768,
  "slot_h": 432,
- "max_items": 12,
+ "max_items": 36,
  "commons_categories": [
   {
    "cat": "Category:Akashi Municipal Planetarium",
@@ -241,5 +262,26 @@
  ],
  "commons_title_skip": [
   "ueno - panoramio"
- ]
+ ],
+ "rules": {
+  "_note": "R65（2026-11-06 B14a）。closed_* に当たる物・〆切や開催日が過ぎた物は出さない。日付の無い知らせは news_days 日まで。museum と space は astro_words が題にある物だけ",
+  "closed_title": "受付(?:は)?終了|申込(?:受付)?終了|受付を終了|締め?切りました|締切ました|定員に達し(?:まし|た)|満員|満席|完売|売り?切れ|中止|開催報告|実施報告|活動報告|結果発表|調査結果|抽選結果|報告|レポート|終了しました|終了いたしました|ありがとうございました",
+  "closed_desc": "受付(?:は|を)?終了(?:しました|いたしました)|定員に達しました|定員に達したため|満員となりました|満席となりました|中止(?:と|に)?(?:なりました|いたしました|が決定)|完売しました|締め?切りました",
+  "astro_words": "星|宇宙|天文|プラネタリウム|天体|銀河|惑星|彗星|流星|日食|月食|満月|新月|お月見|月面|月の|皆既|望遠鏡|観望|ロケット|探査|衛星|火星|木星|土星|金星|太陽|オーロラ|天の川|宙|コスモ|ギャラクシ|はやぶさ|初日の出|ブラックホール|恒星|重力波|電波望遠鏡|すばる|アルマ|ALMA|プラ寝たリウム",
+  "event_words": "イベント|教室|講座|講演|ショー|観察会|観望会|見る会|上映|投影|展|ワークショップ|体験|工作|フェス|コンサート|ナイト|まつり|祭|セミナー|ツアー|実験|キャンプ|開催|ラボ|サイエンス|科学|かがく",
+  "future_days": 365,
+  "news_days": 30,
+  "science_words": "サイエンス|科学|かがく|実験|工作|観察|ショー|化学|物理|顕微鏡|電気|磁石|光の|ロボット"
+ },
+ "per_venue": 5,
+ "qr": {
+  "file": "qr.png",
+  "size": 1024,
+  "cols": 6,
+  "rows": 6,
+  "error": "m",
+  "border": 4,
+  "min_px": 2
+ },
+ "target": 30
 }
