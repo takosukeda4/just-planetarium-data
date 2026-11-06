@@ -1,13 +1,8 @@
 name: update-data
 on:
   schedule:
-    - cron: "7,37 * * * *"      # 30 分ごと: 雨（GitHub の定時実行は数分〜十数分遅れることがある）
-    - cron: "20 18 * * *"       # 毎日 03:20 JST: 情報パネル + 画像の枠を入れ替える
+    - cron: "20 18 * * *"       # 毎日 03:20 JST: 情報パネル + 画像の枠を入れ替える（雨の定時は 11/6 にやめた）
   workflow_dispatch:
-    inputs:
-      what:
-        description: "rain / info / both"
-        default: "both"
 permissions:
   contents: write
 concurrency:
@@ -22,18 +17,10 @@ jobs:
       - uses: actions/setup-python@v5
         with: { python-version: "3.12" }
       - run: pip install pillow
-      - name: choose
-        id: c
-        run: |
-          if [ "${{ github.event.schedule }}" = "20 18 * * *" ]; then echo "what=both" >> $GITHUB_OUTPUT
-          elif [ "${{ github.event_name }}" = "workflow_dispatch" ]; then echo "what=${{ github.event.inputs.what }}" >> $GITHUB_OUTPUT
-          else echo "what=rain" >> $GITHUB_OUTPUT; fi
       - name: build
         run: |
           mkdir -p out
-          W="${{ steps.c.outputs.what }}"
-          if [ "$W" = "rain" ] || [ "$W" = "both" ]; then python scripts/build_rain.py out; fi
-          if [ "$W" = "info" ] || [ "$W" = "both" ]; then python scripts/build_info.py out; fi
+          python scripts/build_info.py out
       - name: publish to gh-pages (keep other files, single commit)
         run: |
           # pub は別のリポジトリなので --global にする（1 回目の実行で「Author identity unknown」になった）
@@ -45,6 +32,7 @@ jobs:
             mkdir pub && cd pub && git init -b gh-pages && git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" && cd ..
           fi
           cp -r out/. pub/
+          rm -f pub/rain.txt pub/rain.json   # 自動の雨は 11/6 にやめた（ワールドは読まない）
           touch pub/.nojekyll
           cd pub
           git add -A
