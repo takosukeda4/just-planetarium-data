@@ -1,0 +1,245 @@
+{
+ "_note": "題・日付・リンクだけ載せる（事実の情報。出典と元のリンクを必ず付ける）。フィードの画像は転載しない。画像は Wikimedia Commons の CC 等だけ。",
+ "feeds": [
+  {
+   "id": "tobikan",
+   "venue": "東京都美術館",
+   "url": "https://www.tobikan.jp/rss.xml",
+   "kind": "museum",
+   "keywords": [
+    "ミュージアム",
+    "企画展",
+    "展",
+    "特別展",
+    "観覧日",
+    "開催"
+   ]
+  },
+  {
+   "id": "nmao",
+   "venue": "国立国際美術館",
+   "url": "https://www.nmao.go.jp/feed/",
+   "kind": "museum",
+   "keywords": [
+    "コレクション",
+    "ミュージアム",
+    "展",
+    "観覧日",
+    "開催"
+   ]
+  },
+  {
+   "id": "nmwa",
+   "venue": "国立西洋美術館",
+   "url": "https://www.nmwa.go.jp/feed/",
+   "kind": "museum",
+   "keywords": [
+    "ミュージアム",
+    "展",
+    "観覧日",
+    "開催"
+   ]
+  },
+  {
+   "id": "artizon",
+   "venue": "アーティゾン美術館",
+   "url": "https://www.artizon.museum/feed/",
+   "kind": "museum",
+   "keywords": [
+    "ミュージアム",
+    "展",
+    "観覧日",
+    "開催"
+   ]
+  },
+  {
+   "id": "minpaku",
+   "venue": "国立民族学博物館",
+   "url": "https://www.minpaku.ac.jp/feed/",
+   "kind": "museum",
+   "keywords": [
+    "ミュージアム",
+    "展",
+    "特別展",
+    "観覧日",
+    "開催"
+   ]
+  },
+  {
+   "id": "am12",
+   "venue": "明石市立天文科学館",
+   "url": "https://www.am12.jp/feed/",
+   "kind": "planetarium",
+   "keywords": [
+    "プラネタリウム",
+    "投影",
+    "番組",
+    "星",
+    "天文"
+   ]
+  },
+  {
+   "id": "osaka_sci",
+   "venue": "大阪市立科学館",
+   "url": "https://www.sci-museum.jp/feed/",
+   "kind": "planetarium",
+   "keywords": [
+    "プラネタリウム",
+    "投影",
+    "展",
+    "星"
+   ]
+  },
+  {
+   "id": "konica",
+   "venue": "コニカミノルタプラネタリア",
+   "url": "https://planetarium.konicaminolta.jp/feed/",
+   "kind": "planetarium",
+   "keywords": [
+    "プラネタリウム",
+    "上映",
+    "番組"
+   ]
+  },
+  {
+   "id": "naoj",
+   "venue": "国立天文台",
+   "url": "https://www.nao.ac.jp/atom.xml",
+   "kind": "astro",
+   "keywords": [
+    "星",
+    "天文",
+    "観望",
+    "月",
+    "彗星",
+    "流星",
+    "食"
+   ]
+  },
+  {
+   "id": "sendai_sci",
+   "venue": "仙台市科学館",
+   "url": "https://www.kagakukan.sendai-c.ed.jp/feed/",
+   "kind": "planetarium",
+   "keywords": [
+    "プラネタリウム",
+    "星",
+    "天文",
+    "宇宙",
+    "展",
+    "観望",
+    "教室",
+    "ラボ",
+    "イベント"
+   ]
+  }
+ ],
+ "commons_allowed_licenses": [
+  "CC0",
+  "Public domain",
+  "PDM",
+  "CC BY 2.0",
+  "CC BY 2.5",
+  "CC BY 3.0",
+  "CC BY 4.0",
+  "CC BY-SA 2.0",
+  "CC BY-SA 2.5",
+  "CC BY-SA 3.0",
+  "CC BY-SA 4.0"
+ ],
+ "exclude": [
+  "チケット",
+  "メンテナンス",
+  "サービス停止",
+  "休館",
+  "休止",
+  "閉館",
+  "臨時休",
+  "閉室",
+  "サイト",
+  "システム",
+  "障害",
+  "ホームページ",
+  "お詫び",
+  "訂正",
+  "採用",
+  "募集",
+  "入札",
+  "調達",
+  "公募",
+  "契約",
+  "委託",
+  "個人情報",
+  "営業時間",
+  "利用案内",
+  "工事",
+  "点検",
+  "人事",
+  "決算",
+  "報告書",
+  "【おしらせ】",
+  "注意喚起",
+  "不審",
+  "料金",
+  "改定",
+  "パスポート",
+  "販売",
+  "カード",
+  "褒章",
+  "受章",
+  "受賞",
+  "値上げ",
+  "ご利用",
+  "お問い合わせ",
+  "天文台ニュース"
+ ],
+ "slots": 6,
+ "slot_w": 768,
+ "slot_h": 432,
+ "max_items": 12,
+ "commons_categories": [
+  {
+   "cat": "Category:Akashi Municipal Planetarium",
+   "label": "明石市立天文科学館"
+  },
+  {
+   "cat": "Category:Konica Minolta Planetarium",
+   "label": "コニカミノルタプラネタリウム"
+  },
+  {
+   "cat": "Category:Konica Minolta Planetaria Yokohama",
+   "label": "コニカミノルタプラネタリア YOKOHAMA"
+  },
+  {
+   "cat": "Category:Planetariums in Japan",
+   "label": "日本のプラネタリウム"
+  },
+  {
+   "cat": "Category:Nagoya City Science Museum",
+   "label": "名古屋市科学館"
+  },
+  {
+   "cat": "Category:Osaka Science Museum",
+   "label": "大阪市立科学館"
+  },
+  {
+   "cat": "Category:NAOJ Mitaka Campus",
+   "label": "国立天文台 三鷹"
+  },
+  {
+   "cat": "Category:Tokyo Metropolitan Art Museum",
+   "label": "東京都美術館"
+  },
+  {
+   "cat": "Category:National Museum of Western Art, Tokyo",
+   "label": "国立西洋美術館"
+  },
+  {
+   "cat": "Category:National Museum of Nature and Science, Tokyo",
+   "label": "国立科学博物館"
+  }
+ ],
+ "commons_title_skip": [
+  "ueno - panoramio"
+ ]
+}
