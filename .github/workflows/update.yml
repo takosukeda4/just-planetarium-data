@@ -24,7 +24,7 @@ jobs:
           mkdir -p out
           python scripts/build_info.py out
           test -s out/qr.png && grep -q '^#qr' out/info.txt
-      - name: board (情報ボード v2: board.txt・cards/・board.json。失敗しても info.txt などは上げる)
+      - name: board (情報ボード v2 - board.txt・cards/・board.json。失敗しても info.txt などは上げる)
         env:
           BOARD_MINUTES: "20"
         run: |
