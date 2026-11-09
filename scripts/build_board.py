@@ -26,6 +26,8 @@ CARDS = os.path.join(OUT, "cards")
 os.makedirs(CARDS, exist_ok=True)
 CFG = json.load(open(os.path.join(HERE, "board_config.json"), encoding="utf-8"))
 B = CFG["board"]
+# 2026-11-09 ユーザーの判断: 画像は自由なライセンスの物だけ（Wikimedia Commons の CC と、CC と明記されたオープンデータ）。館のページの画像・チラシは写さない
+FREE_ONLY = B.get("free_images_only", True)
 SRC = json.load(open(os.path.join(HERE, "sources.json"), encoding="utf-8"))
 FEEDS = json.load(open(os.path.join(HERE, "feeds_auto.json"), encoding="utf-8"))["feeds"]
 VENUES = json.load(open(os.path.join(HERE, "venues.json"), encoding="utf-8"))["venues"]
@@ -420,6 +422,8 @@ def stage_feed(c):
     """① フィードの中の画像"""
     c["img"], c["credit"] = -1, ""
     fi = c["feed_img"]
+    if FREE_ONLY and not c.get("feed_img_credit"):   # 自由なライセンスと明記された画像（BODIK の CC）だけ
+        return
     if fi and not BAD_IMG.search(fi) and fi_n[(c["vid"], key_img(fi))] < 2 and not same_img(fi, c["top_og"]):
         try_img(c, fi, c.get("feed_img_credit") or "画像: %sのページから" % c["venue"], c["url"], "フィードの画像（館のページ）")
 
@@ -428,7 +432,7 @@ with ThreadPoolExecutor(32) as ex:
     list(ex.map(stage_feed, interleave(sel)))
 n_feed = len(cards)
 # ② 画像がまだ無い件だけページを読む（og:image）。最大 og_pages_max
-need_page = [c for c in sel if c["img"] < 0][:B["og_pages_max"]]
+need_page = [] if FREE_ONLY else [c for c in sel if c["img"] < 0][:B["og_pages_max"]]
 with ThreadPoolExecutor(32) as ex:
     list(ex.map(read_page, interleave(need_page)))
     need_top = {}
@@ -449,7 +453,7 @@ def stage_rest(c):
     """② ページの og:image → ③ 館の Commons の写真"""
     if c["img"] >= 0:
         return
-    og = c.get("og")
+    og = None if FREE_ONLY else c.get("og")
     if og and not BAD_IMG.search(og) and og_n[(c["vid"], key_img(og))] < 2 and not same_img(og, c["top_og"]):
         if try_img(c, og, "画像: %sのページから" % c["venue"], c["url"], "ページの og:image（館のページ）"):
             return
@@ -495,7 +499,7 @@ doc = {"updated": now, "today": today.isoformat(), "count": len(sel), "cards": l
        "sources": {"feeds": len(feeds), "feed_stat": dict(feed_stat), "bodik": bodik_sources,
                    "bodik_note": "BODIK オープンデータ（各自治体のイベント一覧、CC BY 等）。出典: 各データの org と page",
                    "wikidata_note": "館の一覧・都道府県は Wikidata（CC0）", "commons_note": "写真は Wikimedia Commons（作者・ライセンスは card_files の credit）"},
-       "note": "題・日付・リンクは各館の公式フィードと BODIK のイベント一覧から（要約は日付と受付の状態を読むだけで載せない）。画像は フィードの画像 → ページの og:image → Wikimedia Commons の順で、縮めて出典付き。館から言われたら blocklist で外す。"}
+       "note": "題・日付・リンクは各館の公式フィードと BODIK のイベント一覧から（要約は日付と受付の状態を読むだけで載せない）。画像は自由なライセンスの物だけ（Wikimedia Commons の CC 写真・CC と明記されたオープンデータ）を縮めて出典付き。館のページの画像・チラシは写さない。館から言われたら blocklist で外す。"}
 json.dump(doc, open(os.path.join(OUT, "board.json"), "w", encoding="utf-8"), ensure_ascii=False, indent=0)
 with open(os.path.join(OUT, "board_filter.log"), "w", encoding="utf-8") as f:
     f.write("# %s の仕分け。DROP 出どころ 理由 題 / KEEP / LOG\n" % today.isoformat())
