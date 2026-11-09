@@ -3,3 +3,7 @@ sample/
 __pycache__/
 _probe/
 _work/
+# 情報ボード v2: 取った画像・途中のファイル（out/ の外で試したとき）
+cards/
+board_filter.log
+*.jpg.tmp

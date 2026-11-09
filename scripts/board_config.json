@@ -1,0 +1,224 @@
+{
+ "_note": "情報ボード v2（2026-11-09）の設定。blocklist: 館から止めてと言われたら、館の id（venues.json の Q 番号・sources.json の id・bodik:場所名）か URL の前方一致をここに足す（その館の件も画像も出さない）。banned_hosts: 使ってはいけない所（規約・robots で止めている所・まとめサイト・SNS）。フィードを探すときも毎日読むときも、この末尾に合うホストは読まない",
+ "blocklist": [],
+ "banned_hosts": [
+  {
+   "host": "artexhibition.jp",
+   "why": "美術展ナビ。利用規約で転載・二次利用を禁止（2026-11-09 の調べ）"
+  },
+  {
+   "host": "museum.or.jp",
+   "why": "インターネットミュージアム。まとめサイト（館の公式でない）"
+  },
+  {
+   "host": "artscape.jp",
+   "why": "まとめサイト（館の公式でない）"
+  },
+  {
+   "host": "tokyoartbeat.com",
+   "why": "まとめサイト（館の公式でない）"
+  },
+  {
+   "host": "artagenda.jp",
+   "why": "まとめサイト。利用規約で転載を禁止"
+  },
+  {
+   "host": "walkerplus.com",
+   "why": "まとめサイト。robots・規約で止めている"
+  },
+  {
+   "host": "peatix.com",
+   "why": "催しの売り場（館の公式でない）"
+  },
+  {
+   "host": "connpass.com",
+   "why": "催しの売り場（館の公式でない）"
+  },
+  {
+   "host": "jaxa.jp",
+   "why": "規約が「事前の許可なく情報の利用（複製・公衆送信など）はお断り」（2026-11-06 に外した）"
+  },
+  {
+   "host": "x.com",
+   "why": "X は使わない"
+  },
+  {
+   "host": "twitter.com",
+   "why": "X は使わない"
+  },
+  {
+   "host": "facebook.com",
+   "why": "SNS は使わない"
+  },
+  {
+   "host": "instagram.com",
+   "why": "SNS は使わない"
+  },
+  {
+   "host": "youtube.com",
+   "why": "動画サイト（フィードは使わない）"
+  }
+ ],
+ "feed_paths": [
+  "feed/",
+  "rss.xml",
+  "atom.xml",
+  "index.rdf",
+  "news/feed/",
+  "rss/"
+ ],
+ "sources_meta": {
+  "tobikan": [
+   "art",
+   "東京都"
+  ],
+  "nmao": [
+   "art",
+   "大阪府"
+  ],
+  "nmwa": [
+   "art",
+   "東京都"
+  ],
+  "artizon": [
+   "art",
+   "東京都"
+  ],
+  "minpaku": [
+   "museum",
+   "大阪府"
+  ],
+  "am12": [
+   "planet",
+   "兵庫県"
+  ],
+  "osaka_sci": [
+   "planet",
+   "大阪府"
+  ],
+  "konica": [
+   "planet",
+   "東京都"
+  ],
+  "naoj": [
+   "planet",
+   "東京都"
+  ],
+  "sendai_sci": [
+   "planet",
+   "宮城県"
+  ],
+  "kawasaki": [
+   "planet",
+   "神奈川県"
+  ],
+  "mirai_ra": [
+   "planet",
+   "静岡県"
+  ],
+  "rukuru": [
+   "planet",
+   "静岡県"
+  ],
+  "expocenter": [
+   "planet",
+   "茨城県"
+  ],
+  "morioka_sci": [
+   "planet",
+   "岩手県"
+  ],
+  "sagamihara": [
+   "museum",
+   "神奈川県"
+  ],
+  "bisei": [
+   "planet",
+   "岡山県"
+  ],
+  "kaiseikan": [
+   "planet",
+   "大分県"
+  ],
+  "jaxa": [
+   "planet",
+   "東京都"
+  ]
+ },
+ "board": {
+  "max_items": 300,
+  "per_venue": 3,
+  "news_days": 30,
+  "future_days": 180,
+  "title_max": 80,
+  "og_pages_max": 300,
+  "feed_max_age_days": 365,
+  "words": "展|展示|展覧会|企画|特別|公開|コレクション|イベント|教室|講座|講演|ショー|観察|観望|見る会|上映|投影|ワークショップ|体験|工作|フェス|コンサート|ナイト|夜間|まつり|祭|フェア|セミナー|ツアー|ガイド|実験|キャンプ|開催|ラボ|サイエンス|科学|かがく|開花|見頃|見ごろ|咲|花|紅葉|ライトアップ|イルミネーション|誕生|赤ちゃん|生まれ|仲間入り|来園|来館|お披露目|飼育|給餌|ごはん|ふれあい|ギャラリー|上演|演奏|映画|アート|作品|星|宇宙|天文|プラネタリウム",
+  "exclude_extra": [
+   "寄附",
+   "寄付",
+   "募金",
+   "ふるさと納税",
+   "アンケート",
+   "求人",
+   "募集要項",
+   "指定管理",
+   "プロポーザル",
+   "見積",
+   "落札",
+   "条例",
+   "規則",
+   "要綱",
+   "議会",
+   "おしらせ一覧",
+   "Instagram",
+   "Facebook",
+   "Twitter",
+   "SNS",
+   "メルマガ",
+   "駐車場",
+   "工事のお知らせ",
+   "混雑",
+   "臨時駐車",
+   "警報",
+   "台風",
+   "熊",
+   "クマ",
+   "社長",
+   "株主",
+   "IR情報",
+   "プレスリリース",
+   "新製品",
+   "受注",
+   "特許",
+   "出展のお知らせ",
+   "メディア掲載",
+   "掲載されました",
+   "放送",
+   "新聞",
+   "【終了】",
+   "終了】",
+   "開催しました",
+   "実施しました",
+   "行いました",
+   "活動の様子",
+   "の様子",
+   "ご報告",
+   "レポート",
+   "非展示",
+   "展示休止",
+   "展示中止",
+   "観覧休止",
+   "公開休止",
+   "公開中止"
+  ],
+  "bodik_words": "博物館|美術館|水族館|動物園|植物園|科学館|プラネタリウム|天文",
+  "bodik_licenses": [
+   "Creative Commons Attribution",
+   "CC BY",
+   "CC-BY",
+   "CC0",
+   "Creative Commons CCZero"
+  ]
+ }
+}

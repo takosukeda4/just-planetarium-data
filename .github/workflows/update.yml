@@ -1,7 +1,7 @@
 name: update-data
 on:
   schedule:
-    - cron: "20 18 * * *"       # 毎日 03:20 JST: 情報パネル + 画像の枠を入れ替える（雨の定時は 11/6 にやめた）
+    - cron: "20 18 * * *"       # 毎日 03:20 JST: 情報パネル + 画像の枠 + 情報ボード v2（board.txt・cards/）を入れ替える（雨の定時は 11/6 にやめた）
   workflow_dispatch:
 permissions:
   contents: write
@@ -11,7 +11,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 35
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -24,6 +24,12 @@ jobs:
           mkdir -p out
           python scripts/build_info.py out
           test -s out/qr.png && grep -q '^#qr' out/info.txt
+      - name: board (情報ボード v2: board.txt・cards/・board.json。失敗しても info.txt などは上げる)
+        env:
+          BOARD_MINUTES: "20"
+        run: |
+          python scripts/build_board.py out || echo "::warning::build_board.py が失敗した（前の board.txt と cards/ を残す）"
+          test -s out/board.txt && grep -q '^#items' out/board.txt || rm -f out/board.txt out/board.json
       - name: publish to gh-pages (keep other files, single commit)
         run: |
           # pub は別のリポジトリなので --global にする（1 回目の実行で「Author identity unknown」になった）
@@ -34,6 +40,7 @@ jobs:
           else
             mkdir pub && cd pub && git init -b gh-pages && git remote add origin "https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git" && cd ..
           fi
+          if [ -s out/board.txt ]; then rm -rf pub/cards; fi   # 画像は毎日入れ替わる（無い番号は置かない）
           cp -r out/. pub/
           rm -f pub/rain.txt pub/rain.json   # 自動の雨は 11/6 にやめた（ワールドは読まない）
           touch pub/.nojekyll

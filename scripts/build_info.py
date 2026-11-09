@@ -6,6 +6,7 @@
 # 環境変数（手元で試すとき）: INFO_CACHE=フォルダ（フィードを 1 回だけ読んで取っておく）、INFO_TODAY=YYYY-MM-DD、SKIP_SLOTS=1（写真の枠を作らない）
 import json, os, sys, re, datetime, hashlib, io, unicodedata, urllib.parse, urllib.robotparser, xml.etree.ElementTree as ET
 from common import fetch, HERE
+from feedlib import strip, parse_feed, norm_date, norm_text, judge_dates
 from PIL import Image, ImageDraw, ImageFilter
 
 OUT = sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "..", "out")
@@ -40,145 +41,7 @@ def robots_ok(url):
         return True   # robots.txt がない・読めない = 制限なし
 
 
-def strip(s):
-    s = re.sub(r"&(nbsp|#160);", " ", s or "")
-    return re.sub(r"\s+", " ", re.sub(r"<[^>]+>", " ", s)).strip()
-
-
-def parse_feed(txt):
-    root = ET.fromstring(txt.encode("utf-8"))
-    out = []
-    for it in root.iter():
-        tag = it.tag.split("}")[-1]
-        if tag not in ("item", "entry"):
-            continue
-        g = {}
-        for c in it:
-            g.setdefault(c.tag.split("}")[-1], c)
-        title = re.sub(r" - ニュース$", "", strip(g["title"].text) if "title" in g else "")
-        link = ""
-        if "link" in g:
-            link = g["link"].get("href") or g["link"].text or ""
-        d = ""
-        for k in ("pubDate", "updated", "published", "date"):
-            if k in g and g[k].text:
-                d = g[k].text.strip()
-                break
-        desc = ""
-        for k in ("description", "summary", "encoded", "content"):
-            if k in g and (g[k].text or "").strip():
-                desc = strip(g[k].text)
-                break
-        # QR は短い方の URL に（WordPress の guid「?p=番号」は元のページへ飛ぶ。長い日本語の URL だと QR が細かくなる）
-        link = link.strip()
-        guid = (g["guid"].text or "").strip() if "guid" in g else ""
-        short = guid if (re.match(r"https?://[^?#\s]+/\?(?:p|page_id)=\d+$", guid) and urllib.parse.urlparse(guid).netloc == urllib.parse.urlparse(link).netloc
-                         and len(guid) < len(link)) else link
-        out.append((title, link, d, desc[:1500], short))
-    return out
-
-
-def norm_date(s):
-    from email.utils import parsedate_to_datetime
-    try:
-        return parsedate_to_datetime(s).astimezone(JST).date()
-    except Exception:
-        m = re.match(r"(\d{4})[-/](\d{1,2})[-/](\d{1,2})", (s or "").strip())
-        try:
-            return datetime.date(int(m.group(1)), int(m.group(2)), int(m.group(3))) if m else None
-        except ValueError:
-            return None
-
-
-# --- 題・要約から日付を読む ---
-DATE_RE = re.compile(r"(20\d\d)年(\d{1,2})月(\d{1,2})日"            # 2026年11月21日
-                     r"|(?<![\d/.])(20\d\d)[./](\d{1,2})[./](\d{1,2})(?![\d])"   # 2026.10.30 / 2026/11/28
-                     r"|(?<![\d])(\d{1,2})月(\d{1,2})日"            # 11月14日
-                     r"|(?<![\d/.:])(\d{1,2})/(\d{1,2})(?![\d/])")  # 11/13
-WEEK = re.compile(r"\s*\([^()]{1,6}\)")                              # (土) (月・祝)
-CONT = re.compile(r"\s*(?:[、,・&]|~|-|から)\s*(?:(\d{1,2})月)?(\d{1,2})日?(?![\d/月年.])")   # 、15日 ・14 ~23日
-STAMP_AFTER = re.compile(r"\s*\)?\s*(?:更新|現在|時点|発行|公開|掲載|追記|発表)")
-DL_AFTER = re.compile(r"\s*\)?\s*(?:〆切|〆|締切|締め切|必着|まで受付|までに申|申込締)")
-DL_BEFORE = re.compile(r"(?:〆切|締切|締め切り|申込期限|応募締切|申込締切|受付期間|申込期間)[^\d]{0,4}$")
-UNTIL_AFTER = re.compile(r"\s*\)?\s*まで")
-LABEL_EV = re.compile(r"(?:日時|開催日時?|日程|期間|会期|実施日|上映期間|投影期間|開催期間|とき)\s*[:：]?")
-LABEL_DL = re.compile(r"(?:〆切|締切|締め切り|申込期限|応募締切|申込締切)\s*[:：]?")
-
-
-def norm_text(s):
-    s = unicodedata.normalize("NFKC", s or "")
-    s = s.replace("〜", "~").replace("～", "~")
-    return re.sub(r"\s*([年月日])\s*", r"\1", s)
-
-
-def mkdate(y, m, d, base):
-    """年が無いときは、元の日（発表日）から 45 日前より後で一番近い年に"""
-    try:
-        if y:
-            return datetime.date(int(y), int(m), int(d))
-        for yy in (base.year - 1, base.year, base.year + 1):
-            dt = datetime.date(yy, int(m), int(d))
-            if dt >= base - datetime.timedelta(days=45):
-                return dt
-    except ValueError:
-        return None
-    return None
-
-
-def find_dates(s, base):
-    """[(日付, 役目)]。役目は event（開催の日）・until（〜まで）・deadline（〆切）。更新日などの判は除く"""
-    s = norm_text(s)
-    out = []
-    for m in DATE_RE.finditer(s):
-        g = m.groups()
-        if g[0]:
-            y, mo, d = g[0], g[1], g[2]
-        elif g[3]:
-            y, mo, d = g[3], g[4], g[5]
-        elif g[6]:
-            y, mo, d = None, g[6], g[7]
-        else:
-            y, mo, d = None, g[8], g[9]
-        dt = mkdate(y, mo, d, base)
-        if not dt:
-            continue
-        ds = [dt]
-        j = m.end()
-        w = WEEK.match(s, j)
-        j = w.end() if w else j
-        while True:                                   # 11月14日（土）、15日（日） / 11/7(土)・14(土)
-            c = CONT.match(s, j)
-            if not c:
-                break
-            d2 = mkdate(None, c.group(1) or dt.month, c.group(2), dt)
-            if not d2 or (d2 - dt).days > 120:
-                break
-            ds.append(d2)
-            j = c.end()
-            w = WEEK.match(s, j)
-            j = w.end() if w else j
-        before, after = s[max(0, m.start() - 8):m.start()], s[j:j + 12]
-        if STAMP_AFTER.match(after) or before.endswith("更新"):
-            continue
-        if DL_AFTER.match(after) or DL_BEFORE.search(before):
-            role = "deadline"
-        elif UNTIL_AFTER.match(after):
-            role = "until"
-        else:
-            role = "event"
-        out += [(x, role) for x in ds]
-    return out
-
-
-def labelled_dates(desc, base):
-    """要約は「日時：」「締切：」などの見出しのすぐ後だけを読む（本文の昔の日付を拾わない）"""
-    s = norm_text(desc)
-    out = []
-    for m in LABEL_DL.finditer(s):
-        out += [(d, "deadline") for d, r in find_dates(s[m.end():m.end() + 30], base)][:1]
-    for m in LABEL_EV.finditer(s):
-        out += [(d, r) for d, r in find_dates(s[m.end():m.end() + 45], base)][:3]
-    return out
+# フィードの読み取り・日付の読み取りは feedlib.py に移した（2026-11-09、build_board.py と共通）
 
 
 CLOSED_T = re.compile(R["closed_title"])
@@ -204,33 +67,12 @@ def judge(f, title, desc, pub):
     else:                                     # プラネタリウム・科学館・天文台: 星の言葉か、催しの言葉
         if not (ASTRO.search(tt) or EVENTW.search(tt) or (f.get("desc_keywords") and ASTRO.search(norm_text(desc)))):
             return False, "対象外（催し・星の言葉なし）", None
-    base = pub or today
-    ds = find_dates(title, base)
-    if not [d for d, r in ds if r != "deadline"]:
-        ds += labelled_dates(desc, base)
-    ev = [d for d, r in ds if r in ("event", "until")]
-    dl = [d for d, r in ds if r == "deadline"]
-    if pub and pub > today and not ev and f.get("future_pub_is_event"):
-        ev = [pub]                             # 発表日が先の日付になっている館（る・く・る）は、それを開催日とみる
-    if dl and max(dl) < today:
-        return False, "〆切が過ぎた(%s)" % max(dl).isoformat(), None
-    if ev:
-        end = max(ev)
-        if end < today:
-            return False, "開催日が過ぎた(%s)" % end.isoformat(), None
-        nxt = min(d for d in ev if d >= today)
-        if (nxt - today).days > R["future_days"]:
-            return False, "先すぎる(%s)" % nxt.isoformat(), None
-        until = any(r == "until" for d, r in ds) and min(ev) <= today
-        return True, "", {"astro": bool(ASTRO.search(tt)) or f["kind"] == "astro", "kind": "until" if until else "event", "date": nxt, "end": end, "deadline": max(dl) if dl else None}
-    if not pub:
-        return False, "日付なし", None
-    if pub > today + datetime.timedelta(days=1):
-        return False, "日付が読めない（発表日が先の日付 %s）" % pub.isoformat(), None
-    age = (today - pub).days
-    if age > R["news_days"]:
-        return False, "古い知らせ(%s)" % pub.isoformat(), None
-    return True, "", {"astro": bool(ASTRO.search(tt)) or f["kind"] == "astro", "kind": "news", "date": pub, "end": None, "deadline": max(dl) if dl else None}
+    ok, why, info = judge_dates(title, desc, pub, today, R, f.get("future_pub_is_event"))
+    if not ok:
+        return False, why, None
+    info.pop("start", None)
+    info["astro"] = bool(ASTRO.search(tt)) or f["kind"] == "astro"
+    return True, "", info
 
 
 cand, report, dropped = [], [], []
